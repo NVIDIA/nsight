@@ -12,7 +12,7 @@ harbor:
   base_image_mode: reuse
   n_attempts: 2              # A/B pairs per case; bump for tighter CIs
   pass_threshold: 0.60
-  stop_on_pass: false         # early-stop needs >1 attempt
+  stop_on_pass: false         # NVCARPS CI runs one attempt; early-stop needs >1
   # Pick agents/models on the CLI, e.g.:
   #   skillevaluator evaluate ./compute-sanitizer -a claude-code
   # Uncomment to pin a model per agent:

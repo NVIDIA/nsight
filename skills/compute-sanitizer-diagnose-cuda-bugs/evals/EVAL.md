@@ -1,6 +1,6 @@
 # compute-sanitizer — Tier 3 eval dataset
 
-This is the live agent A/B evaluation dataset for the `compute-sanitizer`
+This is the NVCARPS Tier 3 (live agent A/B) dataset for the `compute-sanitizer`
 meta-skill. Each case is run twice — **with** the skill staged and **without** —
 and the "Skill Lift" is the difference in pass rate.
 
