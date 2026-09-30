@@ -39,7 +39,8 @@ data races (out of scope — use iGUARD or SuperCollider).
 
 ## Prerequisites
 
-- CUDA Toolkit with `nvcc` and `compute-sanitizer` on `PATH`.
+- A CUDA Toolkit installation that provides both `nvcc` and
+  `compute-sanitizer` on `PATH`.
 - A CUDA-capable GPU visible to the process.
 - Build with `nvcc -lineinfo` for source attribution (add `-Xcompiler
   -rdynamic` for host backtraces).
@@ -65,7 +66,7 @@ A Compute Sanitizer report on stdout/stderr with this structure:
 `N == 0` = clean *for that tool*; `N > 0` = each block localizes one error by
 `file:line`, thread, and block.
 
-## Route the symptom to a tool
+## Route the Symptom to a Tool
 
 | Symptom in the report / behavior | Tool | Read before running |
 |---|---|---|
