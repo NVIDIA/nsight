@@ -1,5 +1,5 @@
 ## Description: <br>
-Detect and diagnose CUDA correctness bugs with NVIDIA Compute Sanitizer by routing GPU memory errors, shared-memory data races, uninitialized-memory reads, and synchronization/barrier bugs to the right sub-tool (memcheck, racecheck, initcheck, synccheck). <br>
+Detect and diagnose CUDA correctness bugs with NVIDIA Compute Sanitizer by routing GPU memory errors, shared-memory data races, uninitialized-memory reads, and synchronization/barrier bugs to the right sub-tool (memcheck, racecheck, initcheck, synccheck) and explaining how to build, run, and read the report. <br>
 
 This skill is ready for commercial/non-commercial use. <br>
 
@@ -9,7 +9,7 @@ NVIDIA <br>
 ### License/Terms of Use: <br>
 Apache-2.0 <br>
 ## Use Case: <br>
-Developers and engineers debugging CUDA GPU applications use this skill to detect and diagnose GPU-side correctness bugs including memory errors, shared-memory races, uninitialized reads, and synchronization issues. <br>
+Developers and engineers debugging CUDA GPU applications use this skill to detect and diagnose GPU-side correctness bugs, including illegal or out-of-bounds memory access, leaks, shared-memory races, uninitialized reads, and synchronization/barrier issues. <br>
 
 ### Deployment Geography for Use: <br>
 Global <br>
@@ -37,7 +37,7 @@ Mitigation: Review and scan skill before deployment. <br>
 
 ## Skill Output: <br>
 **Output Type(s):** [Analysis, Shell commands] <br>
-**Output Format:** [Structured text report on stdout/stderr with file:line localization] <br>
+**Output Format:** [Markdown with inline bash code blocks; interprets Compute Sanitizer stdout/stderr reports with file:line localization] <br>
 **Output Parameters:** [1D] <br>
 **Other Properties Related to Output:** [None] <br>
 
@@ -48,39 +48,39 @@ Mitigation: Review and scan skill before deployment. <br>
 
 
 ## Evaluation Tasks: <br>
-14 evaluation tasks (13 positive, 1 negative) with 3 attempts per task in isolated k8s-sandbox pods. <br>
+16 evaluation tasks (15 positive, 1 negative), 1 attempt per task, each run in an isolated k8s-sandbox pod and compared against a no-skill baseline. <br>
 
 ## Evaluation Metrics Used: <br>
 Reported benchmark dimensions: <br>
-- Security: Whether the skill avoids unsafe operations, secret leakage, and unauthorized access. <br>
-- Correctness: Whether the final answer is correct against the reference answer. <br>
-- Discoverability: Whether the right skill was selected and activated when needed. <br>
-- Effectiveness: Whether the skill helped complete the user's goal and expected workflow (goal_accuracy 50% + behavior_check 50%). <br>
-- Efficiency: Whether the skill avoided wasted tool calls and token usage (skill_efficiency 50% + token_efficiency 50%). <br>
+- Security: Is it safe to use? Scored from the `security` signal. <br>
+- Correctness: Is the answer correct? Scored from the `accuracy` signal. <br>
+- Discoverability: Was the right skill loaded when needed? Scored from the `skill_execution` signal. <br>
+- Effectiveness: Did the skill help complete the task? Equal-weight mean of `goal_accuracy` and `behavior_check`. <br>
+- Efficiency: Did it avoid wasted tool calls and token usage? Equal-weight mean of `skill_efficiency` and `token_efficiency`. <br>
 
 Underlying evaluation signals used in this run: <br>
-- `security`: Checks for unsafe operations, secret leakage, and unauthorized access. <br>
-- `accuracy`: Final-answer correctness against the reference answer. <br>
+- `security`: Unsafe operations, secret leakage, and unauthorized access. <br>
 - `skill_execution`: Whether the expected skill was selected, decoys were avoided, and the workflow executed. <br>
+- `skill_efficiency`: Tool-call productivity. <br>
+- `accuracy`: Final-answer correctness against the reference answer. <br>
 - `goal_accuracy`: Whether the user's goal was achieved. <br>
 - `behavior_check`: Whether the expected workflow behavior was followed. <br>
-- `skill_efficiency`: Tool-call productivity. <br>
 - `token_efficiency`: Actual uncached prompt plus completion token usage. <br>
 
 
 
 ## Evaluation Results: <br>
-| Measure | Claude Code | Codex |
+| Measure | Claude Code (Baseline → Skill) | Codex (Baseline → Skill) |
 |---|---:|---:|
-| Overall | 99.0% | 95.9% |
-| Security | 100.0% | 100.0% |
-| Correctness | 100.0% | 100.0% |
-| Discoverability | 100.0% | 94.2% |
-| Effectiveness | 98.6% | 96.4% |
-| Efficiency | 96.5% | 89.1% |
+| Overall | 98.7% (no comparable baseline) | 95.3% (no comparable baseline) |
+| Security | 100.0% → 100.0% (±0.0 points) | 100.0% → 100.0% (±0.0 points) |
+| Correctness | 98.8% → 100.0% (+1.2 points) | 100.0% → 96.3% (-3.7 points) |
+| Discoverability | 100.0% (no comparable baseline) | 94.3% (no comparable baseline) |
+| Effectiveness | 81.8% → 96.9% (+15.1 points) | 81.2% → 94.1% (+12.9 points) |
+| Efficiency | 96.5% (no comparable baseline) | 91.9% (no comparable baseline) |
 
 ## Skill Version(s): <br>
-1f4459d (source: git SHA, committed 2026-09-28) <br>
+3f897d7 (source: git SHA, committed 2026-10-08) <br>
 
 ## Ethical Considerations: <br>
 NVIDIA believes Trustworthy AI is a shared responsibility and we have established policies and practices to enable development for a wide array of AI applications. When downloaded or used in accordance with our terms of service, developers should work with their internal team to ensure this skill meets requirements for the relevant industry and use case and addresses unforeseen product misuse. <br>
