@@ -12,3 +12,7 @@ Nsight Agent Skills can be found under `skills/`.
 | Skill | Description |
 | --- | --- |
 | `compute-sanitizer-diagnose-cuda-bugs` | Detect and diagnose CUDA correctness bugs with NVIDIA Compute Sanitizer, including memory errors, shared-memory races, uninitialized reads, and synchronization/barrier issues. |
+
+## Contributions
+
+This project is currently not accepting contributions.
