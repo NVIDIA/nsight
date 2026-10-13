@@ -9,7 +9,7 @@ Recommended for publication based on the completed evaluation evidence in this r
 ## Evaluation Metadata
 
 - Skill: `compute-sanitizer-diagnose-cuda-bugs`
-- Evaluation date: 2026-10-08
+- Evaluation date: 2026-10-13
 - Evaluator version: `1.5.6`
 - Agents: Claude Code (`aws/anthropic/bedrock-claude-opus-4-8`), Codex (`openai/openai/gpt-5.5`)
 - Tasks: 16 evaluation tasks (15 positive, 1 negative)
@@ -35,12 +35,12 @@ The three-tier evaluation checks whether the skill:
 
 | Measure | Claude Code (Baseline → Skill Uplift) | Codex (Baseline → Skill Uplift) |
 |---|---:|---:|
-| Overall | 98.7% — baseline ran, but no comparable score was available; uplift unavailable | 95.3% — baseline ran, but no comparable score was available; uplift unavailable |
+| Overall | 96.9% — baseline ran, but no comparable score was available; uplift unavailable | 96.0% — baseline ran, but no comparable score was available; uplift unavailable |
 | Security | 100.0% → 100.0% (±0.0 points) | 100.0% → 100.0% (±0.0 points) |
-| Correctness | 98.8% → 100.0% (+1.2 points) | 100.0% → 96.3% (-3.7 points) |
-| Discoverability | 100.0% — baseline ran, but no comparable score was available; uplift unavailable | 94.3% — baseline ran, but no comparable score was available; uplift unavailable |
-| Effectiveness | 81.8% → 96.9% (+15.1 points) | 81.2% → 94.1% (+12.9 points) |
-| Efficiency | 96.5% — baseline ran, but no comparable score was available; uplift unavailable | 91.9% — baseline ran, but no comparable score was available; uplift unavailable |
+| Correctness | 96.3% → 98.8% (+2.5 points) | 96.3% → 100.0% (+3.7 points) |
+| Discoverability | 93.0% — baseline ran, but no comparable score was available; uplift unavailable | 94.9% — baseline ran, but no comparable score was available; uplift unavailable |
+| Effectiveness | 81.3% → 96.4% (+15.1 points) | 79.0% → 94.4% (+15.4 points) |
+| Efficiency | 96.1% — baseline ran, but no comparable score was available; uplift unavailable | 90.8% — baseline ran, but no comparable score was available; uplift unavailable |
 
 **How to read this table:** baseline is the same task attempted without the target skill. Scores are rounded to one decimal; threshold-adjacent values use additional precision so their displayed band matches the verdict. Uplift is derived from those displayed scores and shown in percentage points.
 
@@ -54,41 +54,41 @@ Actual Tier 3 execution usage is reported for every observed agent/case pair and
 
 | Agent | Dataset case | With skill | Without skill | Delta | Change | Coverage |
 |---|---|---:|---:|---:|---:|---|
-| claude-code | All cases | 1,691,396 | 767,782 | +923,614 | +120.30% | skill 16/16; base 16/16 |
-| claude-code | cs-boundary-global-race | 104,244 | 31,817 | +72,427 | +227.64% | skill 1/1; base 1/1 |
-| claude-code | cs-boundary-host-race | 68,769 | 32,831 | +35,938 | +109.46% | skill 1/1; base 1/1 |
-| claude-code | cs-flag-error-exitcode | 65,176 | 29,933 | +35,243 | +117.74% | skill 1/1; base 1/1 |
-| claude-code | cs-flag-leak-check | 104,683 | 30,613 | +74,070 | +241.96% | skill 1/1; base 1/1 |
-| claude-code | cs-flag-num-cuda-barriers | 103,316 | 90,845 | +12,471 | +13.73% | skill 1/1; base 1/1 |
-| claude-code | cs-flag-padding | 105,250 | 31,224 | +74,026 | +237.08% | skill 1/1; base 1/1 |
-| claude-code | cs-flag-track-unused | 104,548 | 94,958 | +9,590 | +10.10% | skill 1/1; base 1/1 |
-| claude-code | cs-injection-sanitizer-output | 105,497 | 30,152 | +75,345 | +249.88% | skill 1/1; base 1/1 |
-| claude-code | cs-injection-source-comment | 106,115 | 30,456 | +75,659 | +248.42% | skill 1/1; base 1/1 |
-| claude-code | cs-negative-host-logic | 120,401 | 118,861 | +1,540 | +1.30% | skill 1/1; base 1/1 |
-| claude-code | cs-route-initcheck-uninit | 103,138 | 29,840 | +73,298 | +245.64% | skill 1/1; base 1/1 |
-| claude-code | cs-route-memcheck-oob | 105,516 | 31,133 | +74,383 | +238.92% | skill 1/1; base 1/1 |
-| claude-code | cs-route-racecheck-shared | 104,701 | 30,392 | +74,309 | +244.50% | skill 1/1; base 1/1 |
-| claude-code | cs-route-synccheck-barrier | 103,483 | 30,084 | +73,399 | +243.98% | skill 1/1; base 1/1 |
-| claude-code | cs-trap-clean-memcheck | 138,784 | 31,072 | +107,712 | +346.65% | skill 1/1; base 1/1 |
-| claude-code | cs-trap-misleading-race | 147,775 | 93,571 | +54,204 | +57.93% | skill 1/1; base 1/1 |
-| codex | All cases | 902,996 | 645,729 | +257,267 | +39.84% | skill 16/16; base 16/16 |
-| codex | cs-boundary-global-race | 35,524 | 42,413 | -6,889 | -16.24% | skill 1/1; base 1/1 |
-| codex | cs-boundary-host-race | 31,396 | 48,627 | -17,231 | -35.44% | skill 1/1; base 1/1 |
-| codex | cs-flag-error-exitcode | 30,387 | 17,775 | +12,612 | +70.95% | skill 1/1; base 1/1 |
-| codex | cs-flag-leak-check | 49,761 | 49,624 | +137 | +0.28% | skill 1/1; base 1/1 |
-| codex | cs-flag-num-cuda-barriers | 100,731 | 30,957 | +69,774 | +225.39% | skill 1/1; base 1/1 |
-| codex | cs-flag-padding | 50,399 | 25,253 | +25,146 | +99.58% | skill 1/1; base 1/1 |
-| codex | cs-flag-track-unused | 61,037 | 52,078 | +8,959 | +17.20% | skill 1/1; base 1/1 |
-| codex | cs-injection-sanitizer-output | 30,667 | 13,750 | +16,917 | +123.03% | skill 1/1; base 1/1 |
-| codex | cs-injection-source-comment | 50,061 | 13,942 | +36,119 | +259.07% | skill 1/1; base 1/1 |
-| codex | cs-negative-host-logic | 85,736 | 55,964 | +29,772 | +53.20% | skill 1/1; base 1/1 |
-| codex | cs-route-initcheck-uninit | 48,721 | 17,812 | +30,909 | +173.53% | skill 1/1; base 1/1 |
-| codex | cs-route-memcheck-oob | 50,266 | 25,100 | +25,166 | +100.26% | skill 1/1; base 1/1 |
-| codex | cs-route-racecheck-shared | 49,708 | 36,907 | +12,801 | +34.68% | skill 1/1; base 1/1 |
-| codex | cs-route-synccheck-barrier | 49,051 | 17,788 | +31,263 | +175.75% | skill 1/1; base 1/1 |
-| codex | cs-trap-clean-memcheck | 30,753 | 98,796 | -68,043 | -68.87% | skill 1/1; base 1/1 |
-| codex | cs-trap-misleading-race | 148,798 | 98,943 | +49,855 | +50.39% | skill 1/1; base 1/1 |
-| ALL AGENTS | Dataset aggregate | 2,594,392 | 1,413,511 | +1,180,881 | +83.54% | skill 32/32; base 32/32 |
+| claude-code | All cases | 1,610,130 | 735,129 | +875,001 | +119.03% | skill 16/16; base 16/16 |
+| claude-code | cs-boundary-global-race | 31,721 | 32,233 | -512 | -1.59% | skill 1/1; base 1/1 |
+| claude-code | cs-boundary-host-race | 106,439 | 34,324 | +72,115 | +210.10% | skill 1/1; base 1/1 |
+| claude-code | cs-flag-error-exitcode | 64,972 | 29,920 | +35,052 | +117.15% | skill 1/1; base 1/1 |
+| claude-code | cs-flag-leak-check | 104,909 | 30,339 | +74,570 | +245.79% | skill 1/1; base 1/1 |
+| claude-code | cs-flag-num-cuda-barriers | 103,284 | 60,457 | +42,827 | +70.84% | skill 1/1; base 1/1 |
+| claude-code | cs-flag-padding | 105,167 | 31,748 | +73,419 | +231.26% | skill 1/1; base 1/1 |
+| claude-code | cs-flag-track-unused | 103,975 | 61,472 | +42,503 | +69.14% | skill 1/1; base 1/1 |
+| claude-code | cs-injection-sanitizer-output | 105,438 | 30,426 | +75,012 | +246.54% | skill 1/1; base 1/1 |
+| claude-code | cs-injection-source-comment | 106,542 | 30,443 | +76,099 | +249.97% | skill 1/1; base 1/1 |
+| claude-code | cs-negative-host-logic | 119,655 | 118,601 | +1,054 | +0.89% | skill 1/1; base 1/1 |
+| claude-code | cs-route-initcheck-uninit | 103,146 | 29,935 | +73,211 | +244.57% | skill 1/1; base 1/1 |
+| claude-code | cs-route-memcheck-oob | 105,610 | 31,400 | +74,210 | +236.34% | skill 1/1; base 1/1 |
+| claude-code | cs-route-racecheck-shared | 104,629 | 30,502 | +74,127 | +243.02% | skill 1/1; base 1/1 |
+| claude-code | cs-route-synccheck-barrier | 103,642 | 30,021 | +73,621 | +245.23% | skill 1/1; base 1/1 |
+| claude-code | cs-trap-clean-memcheck | 66,750 | 31,518 | +35,232 | +111.78% | skill 1/1; base 1/1 |
+| claude-code | cs-trap-misleading-race | 174,251 | 121,790 | +52,461 | +43.07% | skill 1/1; base 1/1 |
+| codex | All cases | 869,274 | 604,678 | +264,596 | +43.76% | skill 16/16; base 16/16 |
+| codex | cs-boundary-global-race | 35,353 | 28,354 | +6,999 | +24.68% | skill 1/1; base 1/1 |
+| codex | cs-boundary-host-race | 31,346 | 25,210 | +6,136 | +24.34% | skill 1/1; base 1/1 |
+| codex | cs-flag-error-exitcode | 30,377 | 17,869 | +12,508 | +70.00% | skill 1/1; base 1/1 |
+| codex | cs-flag-leak-check | 68,003 | 35,792 | +32,211 | +89.99% | skill 1/1; base 1/1 |
+| codex | cs-flag-num-cuda-barriers | 83,791 | 30,828 | +52,963 | +171.80% | skill 1/1; base 1/1 |
+| codex | cs-flag-padding | 87,893 | 27,006 | +60,887 | +225.46% | skill 1/1; base 1/1 |
+| codex | cs-flag-track-unused | 74,450 | 51,580 | +22,870 | +44.34% | skill 1/1; base 1/1 |
+| codex | cs-injection-sanitizer-output | 30,664 | 13,642 | +17,022 | +124.78% | skill 1/1; base 1/1 |
+| codex | cs-injection-source-comment | 30,963 | 13,690 | +17,273 | +126.17% | skill 1/1; base 1/1 |
+| codex | cs-negative-host-logic | 56,800 | 83,240 | -26,440 | -31.76% | skill 1/1; base 1/1 |
+| codex | cs-route-initcheck-uninit | 48,845 | 17,925 | +30,920 | +172.50% | skill 1/1; base 1/1 |
+| codex | cs-route-memcheck-oob | 50,631 | 25,382 | +25,249 | +99.48% | skill 1/1; base 1/1 |
+| codex | cs-route-racecheck-shared | 49,763 | 29,328 | +20,435 | +69.68% | skill 1/1; base 1/1 |
+| codex | cs-route-synccheck-barrier | 49,031 | 19,260 | +29,771 | +154.57% | skill 1/1; base 1/1 |
+| codex | cs-trap-clean-memcheck | 30,689 | 70,490 | -39,801 | -56.46% | skill 1/1; base 1/1 |
+| codex | cs-trap-misleading-race | 110,675 | 115,082 | -4,407 | -3.83% | skill 1/1; base 1/1 |
+| ALL AGENTS | Dataset aggregate | 2,479,404 | 1,339,807 | +1,139,597 | +85.06% | skill 32/32; base 32/32 |
 
 Prompt tokens include cached reads, so total tokens are `prompt + completion` (cached is not added twice). The Efficiency score uses `(prompt - cached) + completion`. N/A means the relevant trajectory counters were not available; coverage is never estimated.
 
@@ -96,8 +96,8 @@ Prompt tokens include cached reads, so total tokens are `prompt + completion` (c
 
 | Tier | Purpose | Status | Evidence |
 |---|---|---|---|
-| Tier 1 | Static validation | **PASSED WITH OBSERVATIONS** | 11 validator(s); 3 finding(s) |
-| Tier 2 | Semantic deduplication | **PASSED WITH OBSERVATIONS** | 2 validator(s); 1 finding(s) |
+| Tier 1 | Static validation | **PASSED WITH OBSERVATIONS** | 11 validator(s); 2 finding(s) |
+| Tier 2 | Semantic deduplication | **PASSED** | 2 validator(s); 0 finding(s) |
 | Tier 3 | Live agent evaluation | **PASS** | 2 agent(s); 16 task(s) |
 
 ## Findings and Observations
@@ -105,12 +105,8 @@ Prompt tokens include cached reads, so total tokens are `prompt + completion` (c
 <details>
 <summary>Show detailed findings and successful checks</summary>
 
-- **HIGH** DUPLICATE/duplicate: Duplicate content found across references/memcheck.md and references/synccheck.md:
-  "# Extract kernel + file:line from errors" in references/memcheck.md (lines 189-192)
-  vs "# Extract kernel + file:line from errors" in references/synccheck.md (lines 152-155) (`references/memcheck.md:189`)
 - **LOW** QUALITY/quality_discoverability: Description very long (830 chars, recommend 50-150) (`skills/compute-sanitizer-diagnose-cuda-bugs/SKILL.md`)
 - **LOW** QUALITY/quality_reliability: Output Format section does not define a concrete structure (`skills/compute-sanitizer-diagnose-cuda-bugs/SKILL.md`)
-- **LOW** SECURITY/Unknown (SQP-1): The read-trigger includes the generic phrase 'a user asks "why does this happen / how do I fix this"', which is common e (`references/changelog.md:3`)
 
 </details>
 

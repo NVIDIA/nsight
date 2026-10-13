@@ -7,7 +7,7 @@ This skill is ready for commercial/non-commercial use. <br>
 NVIDIA <br>
 
 ### License/Terms of Use: <br>
-Apache-2.0 <br>
+CC-BY-4.0 AND Apache 2.0 <br>
 ## Use Case: <br>
 Developers and engineers debugging CUDA GPU applications use this skill to detect and diagnose GPU-side correctness bugs, including illegal or out-of-bounds memory access, leaks, shared-memory races, uninitialized reads, and synchronization/barrier issues. <br>
 
@@ -72,15 +72,15 @@ Underlying evaluation signals used in this run: <br>
 ## Evaluation Results: <br>
 | Measure | Claude Code (Baseline → Skill) | Codex (Baseline → Skill) |
 |---|---:|---:|
-| Overall | 98.7% (no comparable baseline) | 95.3% (no comparable baseline) |
+| Overall | 96.9% (no comparable baseline) | 96.0% (no comparable baseline) |
 | Security | 100.0% → 100.0% (±0.0 points) | 100.0% → 100.0% (±0.0 points) |
-| Correctness | 98.8% → 100.0% (+1.2 points) | 100.0% → 96.3% (-3.7 points) |
-| Discoverability | 100.0% (no comparable baseline) | 94.3% (no comparable baseline) |
-| Effectiveness | 81.8% → 96.9% (+15.1 points) | 81.2% → 94.1% (+12.9 points) |
-| Efficiency | 96.5% (no comparable baseline) | 91.9% (no comparable baseline) |
+| Correctness | 96.3% → 98.8% (+2.5 points) | 96.3% → 100.0% (+3.7 points) |
+| Discoverability | 93.0% (no comparable baseline) | 94.9% (no comparable baseline) |
+| Effectiveness | 81.3% → 96.4% (+15.1 points) | 79.0% → 94.4% (+15.4 points) |
+| Efficiency | 96.1% (no comparable baseline) | 90.8% (no comparable baseline) |
 
 ## Skill Version(s): <br>
-3f897d7 (source: git SHA, committed 2026-10-08) <br>
+489b2fb (source: git SHA, committed 2026-10-13) <br>
 
 ## Ethical Considerations: <br>
 NVIDIA believes Trustworthy AI is a shared responsibility and we have established policies and practices to enable development for a wide array of AI applications. When downloaded or used in accordance with our terms of service, developers should work with their internal team to ensure this skill meets requirements for the relevant industry and use case and addresses unforeseen product misuse. <br>
