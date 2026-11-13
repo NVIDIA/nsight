@@ -15,6 +15,7 @@ Nsight AI Skills can be found under `skills/`.
 
 | Skill | Description |
 | --- | --- |
+| `nsight-port-cpu-to-gpu` | Port Fortran and C++ HPC applications to NVIDIA GPUs (OpenACC, OpenMP offload, CUDA, Kokkos) with an Nsight Systems profile-guided loop and per-function numerical verification against the original code. |
 | `compute-sanitizer-diagnose-cuda-bugs` | Detect and diagnose CUDA correctness bugs with NVIDIA Compute Sanitizer, including memory errors, shared-memory races, uninitialized reads, and synchronization/barrier issues. |
 
 ## More Nsight on GitHub
